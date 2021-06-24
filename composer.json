@@ -1,5 +1,6 @@
 {
     "type": "project",
+    "description": "Paysera Task",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -25,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "Ferror\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "Ferror\\": "tests/"
         }
     },
     "replace": {
