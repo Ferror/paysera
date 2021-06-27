@@ -6,8 +6,10 @@ namespace Ferror\Application;
 use Ferror\Domain\Currency;
 use Ferror\Domain\Money;
 use Ferror\Domain\Operation;
-use Ferror\Domain\OperationStorage;
+use Ferror\Domain\Operation\OperationStorage;
+use Ferror\Domain\Operation\OperationType;
 use Ferror\Domain\Price;
+use Ferror\Domain\User;
 use Ferror\Domain\User\UserIdentifier;
 use Ferror\Domain\User\UserType;
 use Ferror\Infrastructure\Memory\MemoryOperationStorage;
@@ -34,13 +36,14 @@ final class OperationStorageFactory
                     throw new \RuntimeException('Invalid DateTime');
                 }
 
-                $storage->add(new Operation(
-                    new UserIdentifier($data[1]),
-                    new UserType($data[2]),
-                    $createdAt,
-                    new Operation\OperationType($data[3]),
-                    new Money(Price::fromString($data[4]), new Currency($data[5]))
-                ));
+                $storage->add(
+                    new Operation(
+                            new User(new UserIdentifier($data[1]), new UserType($data[2])),
+                            $createdAt,
+                            new OperationType($data[3]),
+                            new Money(Price::fromString($data[4]), new Currency($data[5]))
+                        )
+                );
             }
         }
 

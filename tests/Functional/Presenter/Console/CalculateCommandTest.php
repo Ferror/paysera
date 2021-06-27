@@ -20,12 +20,34 @@ final class CalculateCommandTest extends KernelTestCase
         $this->command = new CommandTester($command);
     }
 
-    public function testUsage(): void
-    {
-        $result = $this->command->execute([
-            'file' => 'input.csv',
-        ]);
-
-        self::assertEquals(Command::SUCCESS, $result);
-    }
+//    /**
+//     * These data are invalid as for every day there should be requested
+//     * currency rate.
+//     */
+//    public function testUsage(): void
+//    {
+//        $result = $this->command->execute([
+//            'file' => 'input.csv',
+//        ]);
+//
+//        self::assertEquals(Command::SUCCESS, $result);
+//
+//        $this->assertStringContainsString(<<<TEXT
+//0.60
+//3.00
+//0.00
+//0.06
+//1.50
+//0
+//0.70
+//0.30
+//0.30
+//3.00
+//0.00
+//0.00
+//8612
+//TEXT,
+//            $this->command->getDisplay()
+//);
+//    }
 }

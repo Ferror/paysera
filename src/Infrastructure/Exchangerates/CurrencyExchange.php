@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Ferror\Infrastructure\Exchangerates;
 
 use Ferror\Domain\Currency;
-use Ferror\Domain\CurrencyExchange as CurrencyExchangeInterface;
+use Ferror\Domain\Currency\CurrencyExchange as CurrencyExchangeInterface;
 use Ferror\Domain\Money;
 use Ferror\Domain\Price;
 

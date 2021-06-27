@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Ferror\Domain;
+namespace Ferror\Domain\Currency;
+
+use Ferror\Domain\Currency;
+use Ferror\Domain\Money;
 
 interface CurrencyExchange
 {

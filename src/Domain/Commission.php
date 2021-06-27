@@ -9,24 +9,30 @@ namespace Ferror\Domain;
  */
 final class Commission
 {
-    private int $cents;
+//    private int $cents;
+//
+//    public static function fromString(string $price): self
+//    {
+//        $tmp = (float) $price;
+//
+//        $result = (int) \ceil($tmp * 100);
+//
+//        return new self($result);
+//    }
+//
+//    public function __construct(int $cents)
+//    {
+//        $this->cents = $cents;
+//    }
+//
+//    public function getCents(): int
+//    {
+//        return $this->cents;
+//    }
+    private Money $money;
 
-    public static function fromString(string $price): self
+    public function __construct(Money $money)
     {
-        $tmp = (float) $price;
-
-        $result = (int) \ceil($tmp * 100);
-
-        return new self($result);
-    }
-
-    public function __construct(int $cents)
-    {
-        $this->cents = $cents;
-    }
-
-    public function getCents(): int
-    {
-        return $this->cents;
+        $this->money = $money;
     }
 }

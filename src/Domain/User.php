@@ -10,13 +10,21 @@ final class User
 {
     private UserIdentifier $identifier;
     private UserType $type;
-    private BankAccount $bankAccount;
 
-    public function __construct(UserIdentifier $identifier, UserType $type, BankAccount $bankAccount)
+    public function __construct(UserIdentifier $identifier, UserType $type)
     {
         $this->identifier = $identifier;
         $this->type = $type;
-        $this->bankAccount = $bankAccount;
+    }
+
+    public function isPrivate(): bool
+    {
+        return $this->type->equals(UserType::private());
+    }
+
+    public function isBusiness(): bool
+    {
+        return $this->type->equals(UserType::business());
     }
 
 //    public function withdraw()

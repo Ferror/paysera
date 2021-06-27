@@ -13,4 +13,9 @@ final class Money
         $this->price = $price;
         $this->currency = $currency;
     }
+
+    public function calculate(Percentage $percentage): self
+    {
+        return new self(new Price((int) \ceil($this->price->getCents() * $percentage->getValue())), $this->currency);
+    }
 }

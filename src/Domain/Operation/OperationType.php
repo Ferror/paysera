@@ -31,4 +31,9 @@ final class OperationType
 
         $this->type = $type;
     }
+
+    public function equals(self $type): bool
+    {
+        return $this->type === $type->type;
+    }
 }
