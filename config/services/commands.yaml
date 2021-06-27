@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Ferror\Presenter\Console\CalculateCommand:
+        class: Ferror\Presenter\Console\CalculateCommand

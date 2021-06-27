@@ -11,4 +11,14 @@ final class Currency
     {
         $this->iso3Code = $iso3Code;
     }
+
+    public function __toString(): string
+    {
+        return $this->toString();
+    }
+
+    public function toString(): string
+    {
+        return $this->iso3Code;
+    }
 }

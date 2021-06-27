@@ -1,9 +1,25 @@
+imports:
+    - { resource: 'services/commands.yaml' }
+
 parameters:
+    exchangerates.access_key: '%env(EXCHANGERATES_ACCESS_KEY)%'
 
 services:
     _defaults:
         autowire: true
         autoconfigure: true
+        public: false
 
-    Ferror\:
-        resource: '../src/'
+    Ferror\Application\OperationStorageFactory:
+        class: Ferror\Application\OperationStorageFactory
+
+    Ferror\Domain\Operation\OperationStorage:
+        class: Ferror\Infrastructure\Memory\MemoryOperationStorage
+
+    Ferror\Infrastructure\Exchangerates\CurrencyExchange:
+        class: Ferror\Infrastructure\Exchangerates\CurrencyExchange
+        arguments:
+            $accessKey: '%exchangerates.access_key%'
+        public: true
+
+    Ferror\Domain\Currency\CurrencyExchange: '@Ferror\Infrastructure\Exchangerates\CurrencyExchange'

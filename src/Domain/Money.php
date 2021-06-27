@@ -18,4 +18,14 @@ final class Money
     {
         return new self(new Price((int) \ceil($this->price->getCents() * $percentage->getValue())), $this->currency);
     }
+
+    public function getCurrency(): Currency
+    {
+        return $this->currency;
+    }
+
+    public function getPrice(): Price
+    {
+        return $this->price;
+    }
 }
