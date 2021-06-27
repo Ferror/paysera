@@ -1,8 +1,34 @@
 <?php
+declare(strict_types=1);
 
+use PhpCsFixer\Fixer\ArrayNotation\ArraySyntaxFixer;
+use PhpCsFixer\Fixer\ClassNotation\ClassAttributesSeparationFixer;
+use PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(SetList::PSR_12);
+    $parameters = $containerConfigurator->parameters();
+    $parameters->set(Option::PATHS, [
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
+    ]);
+    $parameters->set(Option::SKIP, [
+        BlankLineAfterOpeningTagFixer::class => null,
+        ClassAttributesSeparationFixer::class => null,
+    ]);
+
+    $services = $containerConfigurator->services();
+    $services
+        ->set(ArraySyntaxFixer::class)
+        ->call('configure', [[
+            'syntax' => 'short',
+        ]]);
+
+    // run and fix, one by one
+     $containerConfigurator->import(SetList::SPACES);
+     $containerConfigurator->import(SetList::ARRAY);
+    // $containerConfigurator->import(SetList::DOCBLOCK);
+     $containerConfigurator->import(SetList::PSR_12);
 };
