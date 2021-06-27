@@ -10,18 +10,20 @@ use Symfony\Component\Console\Command\Command;
 
 final class CalculateCommandTest extends KernelTestCase
 {
-    public function testExecute(): void
+    private CommandTester $command;
+
+    protected function setUp(): void
     {
-        $kernel = static::createKernel();
-        $application = new Application($kernel);
-
+        $application = new Application(static::createKernel());
         $command = $application->find('fee:calculate');
-        $commandTester = new CommandTester($command);
-        $result = $commandTester->execute([
-            // pass arguments to the helper
 
-            // prefix the key with two dashes when passing options,
-            // e.g: '--some-option' => 'option_value',
+        $this->command = new CommandTester($command);
+    }
+
+    public function testUsage(): void
+    {
+        $result = $this->command->execute([
+            'file' => 'input.csv'
         ]);
 
         self::assertEquals(Command::SUCCESS, $result);
