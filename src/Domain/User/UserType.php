@@ -25,7 +25,7 @@ final class UserType
      */
     public function __construct(string $type)
     {
-        if (!\in_array(\strtoupper($type), [self::PRIVATE, self::BUSINESS])) {
+        if (! \in_array(\strtoupper($type), [self::PRIVATE, self::BUSINESS])) {
             throw new UserException('Invalid User Type');
         }
 

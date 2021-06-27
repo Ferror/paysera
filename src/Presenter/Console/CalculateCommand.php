@@ -12,6 +12,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 final class CalculateCommand extends Command
 {
     private KernelInterface $kernel;
+
     private OperationStorageFactory $operationStorageFactory;
 
     public function __construct(

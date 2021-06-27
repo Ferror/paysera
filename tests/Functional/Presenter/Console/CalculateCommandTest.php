@@ -5,8 +5,8 @@ namespace Ferror\Functional\Presenter\Console;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Tester\CommandTester;
 
 final class CalculateCommandTest extends KernelTestCase
 {
@@ -23,7 +23,7 @@ final class CalculateCommandTest extends KernelTestCase
     public function testUsage(): void
     {
         $result = $this->command->execute([
-            'file' => 'input.csv'
+            'file' => 'input.csv',
         ]);
 
         self::assertEquals(Command::SUCCESS, $result);

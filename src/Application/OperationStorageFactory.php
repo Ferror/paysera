@@ -23,7 +23,7 @@ final class OperationStorageFactory
             throw new \RuntimeException('Invalid File');
         }
 
-        while (!\feof($file)) {
+        while (! \feof($file)) {
             $line = \fgets($file);
 
             if (false !== $line) {

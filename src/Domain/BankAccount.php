@@ -5,5 +5,4 @@ namespace Ferror\Domain;
 
 final class BankAccount
 {
-
 }

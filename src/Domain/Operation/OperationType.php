@@ -25,7 +25,7 @@ final class OperationType
      */
     public function __construct(string $type)
     {
-        if (!\in_array(\strtoupper($type), [self::WITHDRAW, self::DEPOSIT])) {
+        if (! \in_array(\strtoupper($type), [self::WITHDRAW, self::DEPOSIT])) {
             throw new OperationException('Invalid Operation Type');
         }
 

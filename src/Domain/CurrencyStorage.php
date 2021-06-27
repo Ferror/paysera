@@ -5,5 +5,4 @@ namespace Ferror\Domain;
 
 interface CurrencyStorage
 {
-
 }
