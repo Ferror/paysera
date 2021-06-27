@@ -6,7 +6,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "symfony/console": "5.3.*",
@@ -22,7 +22,8 @@
         "phpstan/phpstan-symfony": "^0.12",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-latest",
-        "symfony/phpunit-bridge": "^5.3"
+        "symfony/phpunit-bridge": "^5.3",
+        "symplify/easy-coding-standard": "^9.3"
     },
     "config": {
         "optimize-autoloader": true,
