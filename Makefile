@@ -1,4 +1,4 @@
 ci:
-	bin/phpunit
-	vendor/bin/ecs check
-	vendor/bin/phpstan
+	composer validate
+	bin/phpunit tests
+	vendor/bin/phpstan analyze -c phpstan.neon
