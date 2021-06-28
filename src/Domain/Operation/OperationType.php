@@ -29,7 +29,7 @@ final class OperationType
             throw new OperationException('Invalid Operation Type');
         }
 
-        $this->type = $type;
+        $this->type = \strtoupper($type);
     }
 
     public function equals(self $type): bool

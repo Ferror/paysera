@@ -27,6 +27,11 @@ final class User
         return $this->type->equals(UserType::business());
     }
 
+    public function equals(UserIdentifier $identifier): bool
+    {
+        return $this->identifier->equals($identifier);
+    }
+
 //    public function withdraw()
 //    {
 //    }

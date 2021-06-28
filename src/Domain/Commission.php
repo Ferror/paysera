@@ -35,4 +35,9 @@ final class Commission
     {
         $this->money = $money;
     }
+
+    public function print(): string
+    {
+        return \sprintf('%f %s', $this->money->getPrice()->getCents(), $this->money->getCurrency()->toString());
+    }
 }

@@ -29,7 +29,7 @@ final class UserType
             throw new UserException('Invalid User Type');
         }
 
-        $this->type = $type;
+        $this->type = \strtoupper($type);
     }
 
     public function equals(self $type): bool

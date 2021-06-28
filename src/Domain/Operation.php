@@ -25,6 +25,11 @@ final class Operation
         $this->money = $money;
     }
 
+    public function getWeekNumber(): int
+    {
+        return (int) $this->createdAt->format('W');
+    }
+
     public function getUser(): User
     {
         return $this->user;

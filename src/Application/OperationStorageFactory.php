@@ -38,11 +38,11 @@ final class OperationStorageFactory
 
                 $storage->add(
                     new Operation(
-                            new User(new UserIdentifier($data[1]), new UserType($data[2])),
-                            $createdAt,
-                            new OperationType($data[3]),
-                            new Money(Price::fromString($data[4]), new Currency($data[5]))
-                        )
+                        new User(new UserIdentifier($data[1]), new UserType($data[2])),
+                        $createdAt,
+                        new OperationType($data[3]),
+                        new Money(Price::fromString($data[4]), new Currency($data[5]))
+                    )
                 );
             }
         }

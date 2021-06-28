@@ -20,13 +20,13 @@ final class CurrencyExchangeTest extends KernelTestCase
 
     public function testItGetsExchangeRate(): void
     {
-        //@phpstan-ignore-next-line
         $rate = $this->exchange->getExchangeRate(
             new Currency('EUR'),
             new Currency('USD'),
+            //@phpstan-ignore-next-line
             \DateTime::createFromFormat('Y-m-d', '2021-06-27')
         );
 
-        self::assertEquals(1.193831, $rate);
+        self::assertEquals(1.194158, $rate);
     }
 }

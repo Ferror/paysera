@@ -38,6 +38,10 @@ final class CalculateCommand extends Command
         if (\file_exists($fileName)) {
             $operationStorage = $this->operationStorageFactory->fromFile($fileName);
 
+            foreach ($operationStorage->getAll() as $operation) {
+                $output->writeln($operation->getCommission()->print());
+            }
+
             return Command::SUCCESS;
         }
 

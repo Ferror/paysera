@@ -27,7 +27,7 @@ final class CurrencyExchange implements CurrencyExchangeInterface
                 'access_key' => $this->accessKey,
                 'base' => $money->getCurrency()->toString(),
                 'date' => date('Y-m-d'),
-            ]
+            ],
         ]);
 
         return new Money(
@@ -44,7 +44,7 @@ final class CurrencyExchange implements CurrencyExchangeInterface
             'query' => [
                 'access_key' => $this->accessKey,
                 'base' => $from->toString(),
-            ]
+            ],
         ]);
 
         return $response->toArray(true)['rates'][$to->toString()];
