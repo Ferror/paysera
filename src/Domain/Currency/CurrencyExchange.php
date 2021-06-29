@@ -8,5 +8,6 @@ use Ferror\Domain\Money;
 
 interface CurrencyExchange
 {
-    public function exchange(Money $money, Currency $to): Money;
+    public function exchange(Money $money, Currency $to, \DateTime $date): Money;
+    public function getExchangeRate(Currency $from, Currency $to, \DateTime $date): float;
 }

@@ -24,7 +24,10 @@
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/Domain</directory>
+            <directory suffix=".php">src/Presenter</directory>
+            <directory suffix=".php">src/Application</directory>
+            <directory suffix=".php">src/Infrastructure</directory>
         </include>
     </coverage>
 

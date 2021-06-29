@@ -21,4 +21,9 @@ final class Currency
     {
         return $this->iso3Code;
     }
+
+    public function equals(self $currency): bool
+    {
+        return $this->iso3Code === $currency->iso3Code;
+    }
 }

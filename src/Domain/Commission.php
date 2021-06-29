@@ -9,26 +9,6 @@ namespace Ferror\Domain;
  */
 final class Commission
 {
-//    private int $cents;
-//
-//    public static function fromString(string $price): self
-//    {
-//        $tmp = (float) $price;
-//
-//        $result = (int) \ceil($tmp * 100);
-//
-//        return new self($result);
-//    }
-//
-//    public function __construct(int $cents)
-//    {
-//        $this->cents = $cents;
-//    }
-//
-//    public function getCents(): int
-//    {
-//        return $this->cents;
-//    }
     private Money $money;
 
     public function __construct(Money $money)
@@ -38,6 +18,6 @@ final class Commission
 
     public function print(): string
     {
-        return \sprintf('%f %s', $this->money->getPrice()->getCents(), $this->money->getCurrency()->toString());
+        return \sprintf('%s %s', (string) $this->money->getPrice()->getCents() / 100, $this->money->getCurrency()->toString());
     }
 }

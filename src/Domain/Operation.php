@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Ferror\Domain;
 
+use Ferror\Domain\Operation\OperationCounter;
 use Ferror\Domain\Operation\OperationException;
 use Ferror\Domain\Operation\OperationType;
 
@@ -25,17 +26,7 @@ final class Operation
         $this->money = $money;
     }
 
-    public function getWeekNumber(): int
-    {
-        return (int) $this->createdAt->format('W');
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function getCommission(): Commission
+    public function calculateCommission(OperationCounter $operationCounter): Commission
     {
         if ($this->type->equals(OperationType::deposit())) {
             return new Commission(
@@ -55,7 +46,16 @@ final class Operation
             }
 
             if ($this->user->isPrivate()) {
-                //@TODO calculate
+                $operationCounter->increment($this->user->getIdentifier(), (int) $this->createdAt->format('W'));
+
+                if ($operationCounter->getWithdrawCount($this->user->getIdentifier(), (int) $this->createdAt->format('W')) > 3) {
+                    return new Commission(
+                        $this->money->calculate(
+                            new Percentage(0.003)
+                        )
+                    );
+                }
+
                 return new Commission(
                     $this->money->calculate(
                         new Percentage(0.0)

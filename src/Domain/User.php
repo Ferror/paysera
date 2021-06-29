@@ -32,11 +32,8 @@ final class User
         return $this->identifier->equals($identifier);
     }
 
-//    public function withdraw()
-//    {
-//    }
-//
-//    public function deposit()
-//    {
-//    }
+    public function getIdentifier(): UserIdentifier
+    {
+        return $this->identifier;
+    }
 }

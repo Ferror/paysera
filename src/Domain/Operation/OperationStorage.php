@@ -14,9 +14,4 @@ interface OperationStorage
      * @return array|Operation[]
      */
     public function getAll(): array;
-
-    /**
-     * @return array|Operation[]
-     */
-    public function findByUserAndWeek(UserIdentifier $identifier, int $week): array;
 }

@@ -16,6 +16,9 @@ services:
     Ferror\Domain\Operation\OperationStorage:
         class: Ferror\Infrastructure\Memory\MemoryOperationStorage
 
+    Ferror\Domain\Operation\OperationCounter:
+        class: Ferror\Infrastructure\Memory\MemoryOperationCounter
+
     Ferror\Infrastructure\Exchangerates\CurrencyExchange:
         class: Ferror\Infrastructure\Exchangerates\CurrencyExchange
         arguments:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Ferror\Presenter\Console;
 
 use Ferror\Application\OperationStorageFactory;
+use Ferror\Domain\Operation\OperationCounter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -12,15 +13,17 @@ use Symfony\Component\HttpKernel\KernelInterface;
 final class CalculateCommand extends Command
 {
     private KernelInterface $kernel;
-
     private OperationStorageFactory $operationStorageFactory;
+    private OperationCounter $operationCounter;
 
     public function __construct(
         KernelInterface $kernel,
-        OperationStorageFactory $operationStorageFactory
+        OperationStorageFactory $operationStorageFactory,
+        OperationCounter $operationCounter
     ) {
         $this->kernel = $kernel;
         $this->operationStorageFactory = $operationStorageFactory;
+        $this->operationCounter = $operationCounter;
 
         parent::__construct();
     }
@@ -39,7 +42,7 @@ final class CalculateCommand extends Command
             $operationStorage = $this->operationStorageFactory->fromFile($fileName);
 
             foreach ($operationStorage->getAll() as $operation) {
-                $output->writeln($operation->getCommission()->print());
+                $output->writeln($operation->calculateCommission($this->operationCounter)->print());
             }
 
             return Command::SUCCESS;

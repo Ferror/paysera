@@ -20,19 +20,18 @@ final class CurrencyExchange implements CurrencyExchangeInterface
         $this->accessKey = $accessKey;
     }
 
-    public function exchange(Money $money, Currency $to): Money
+    public function exchange(Money $money, Currency $to, \DateTime $date): Money
     {
-        $response = $this->client->request('GET', 'latest', [
+        $response = $this->client->request('GET', $date->format('Y-m-d'), [
             'query' => [
                 'access_key' => $this->accessKey,
                 'base' => $money->getCurrency()->toString(),
-                'date' => date('Y-m-d'),
             ],
         ]);
 
         return new Money(
             new Price(
-                $response->toArray(true)['rates'][$to->toString()] * $money->getPrice()->getCents()
+                (int) round($response->toArray(true)['rates'][$to->toString()] * $money->getPrice()->getCents(), 0)
             ),
             $to
         );
